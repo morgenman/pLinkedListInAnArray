@@ -1,39 +1,39 @@
 #include "memoryPool.h"
+using NodePtr = int;
 
-    NodePtr newNode() {
-        return 5;
-    }
 
-    void deleteNode(NodePtr curr){
+NodePtr MemoryPool::newNode() {
+    return 5;
+}
 
-    }
+void MemoryPool::deleteNode(NodePtr curr){
 
-    char data(NodePtr curr){
-        return 'a';
-    }
+}
 
-    char data(NodePtr curr, char ch){
-        return 'a';
-    }
+char MemoryPool::data(NodePtr curr){
+    return 'a';
+}
 
-    NodePtr next(NodePtr curr){
-        return 5;
-    }
+char MemoryPool::data(NodePtr curr, char ch){
+    return 'a';
+}
 
-    NodePtr next(NodePtr curr, NodePtr next){
-        return 5;
-    }
+NodePtr MemoryPool::next(NodePtr curr){
+    return 5;
+}
 
-    bool trace(bool traceOn){
-        return false;
-    }
+NodePtr MemoryPool::next(NodePtr curr, NodePtr next){
+    return 5;
+}
 
-    void showFreeList(){
+bool MemoryPool::trace(bool traceOn){
+    return false;
+}
 
-    }
+void MemoryPool::showFreeList(){
 
-    void nodes(NodePtr head){
-        
-    }
+}
 
-};
+void MemoryPool::nodes(NodePtr head){
+    
+}

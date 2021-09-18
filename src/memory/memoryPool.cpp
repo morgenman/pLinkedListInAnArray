@@ -1,7 +1,7 @@
 #include "memoryPool.h"
 
 
-NodePtr MemoryPool::newNode() {
+MemoryPool::NodePtr MemoryPool::newNode() {
     return 5;
 }
 
@@ -17,11 +17,11 @@ char MemoryPool::data(NodePtr curr, char ch){
     return 'a';
 }
 
-NodePtr MemoryPool::next(NodePtr curr){
+MemoryPool::NodePtr MemoryPool::next(NodePtr curr){
     return 5;
 }
 
-NodePtr MemoryPool::next(NodePtr curr, NodePtr next){
+MemoryPool::NodePtr MemoryPool::next(NodePtr curr, NodePtr next){
     return 5;
 }
 

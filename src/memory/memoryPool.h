@@ -2,7 +2,7 @@
 
 class MemoryPool: public AbstractPool{
 public:
-    using NodePtr = AbstractPool::NodePtr;
+    //using NodePtr = AbstractPool::NodePtr;
 
     NodePtr newNode();
 

@@ -1,5 +1,4 @@
 #include "memoryPool.h"
-using NodePtr = int;
 
 
 NodePtr MemoryPool::newNode() {

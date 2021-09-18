@@ -2,6 +2,8 @@
 
 class MemoryPool: public AbstractPool{
 public:
+    using NodePtr = AbstractPool::NodePtr;
+
     NodePtr newNode();
 
     void deleteNode(NodePtr curr);

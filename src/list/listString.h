@@ -7,17 +7,18 @@
 
 class ListString
 {
-  public:
+public:
   using NodePtr = AbstractPool::NodePtr;
   constexpr static NodePtr nullNodePtr = AbstractPool::nullNodePtr;
-    /**
-     * Set the pool to use. Must be run before any ListString are
-     * created and can only be called once.
-     *
-     * @param thePool pointer an an AbstractPool implementation that will provide nodes.
-     * @throws logic_error if set a second time.
-     */
-  static void setPool(AbstractPool * thePool);
+  
+  /**
+   * Set the pool to use. Must be run before any ListString are
+   * created and can only be called once.
+   *
+   * @param thePool pointer an an AbstractPool implementation that will provide nodes.
+   * @throws logic_error if set a second time.
+   */
+  static void setPool(AbstractPool *thePool);
 
   static void trace(bool traceOn);
   static void freeList();
@@ -40,7 +41,7 @@ class ListString
    *
    * @param original the ListString to copy
    */
-  ListString(ListString & original);
+  ListString(ListString &original);
 
   /**
    * Move constructor: swap contents with original, assuming original
@@ -48,14 +49,14 @@ class ListString
    *
    * @param orignal the ListString that is being robbed of its content.
    */
-  ListString(ListString && original);
+  ListString(ListString &&original);
 
   /**
    * Assignment operator. Parameter passed by value on purpose so the
    * lhs can swap with the parameter to get its value.
    *
    */
-  ListString & operator=(ListString rhs);
+  ListString &operator=(ListString rhs);
 
   /**
    * Delete a ListString, returning all Nodes to the Pool.
@@ -86,10 +87,11 @@ class ListString
   virtual void igpayAtinlay();
 
   virtual void nodes();
-  private:
+
+private:
   // Static _pointer_ to the class-wide memory pool.  MUST be set
   // before any constructor is called; cannot be reset.
-  static AbstractPool * pool;
+  static AbstractPool *pool;
 
   /**
    * Swap our guts with the guts of the other string.
@@ -97,7 +99,7 @@ class ListString
    * @param other another ListString with which we will exchange
    * value.
    */
-  void swap(ListString & other);
+  void swap(ListString &other);
 
   /**
    * Clean up a linked list by releasing the nodes.
@@ -105,7 +107,7 @@ class ListString
    * @param listToClean points to the list to be released; will be set
    * to nullNodePtr upon return.
    */
-  void clean(NodePtr & listToClean);
+  void clean(NodePtr &listToClean);
 
   /**
    *  Return the NodePtr of the last node in the current list.
@@ -122,6 +124,5 @@ class ListString
   // external function is permitted to break encapsulation.
   friend std::ostream &operator<<(std::ostream &out, const ListString &string);
 };
-
 
 #endif /* LISTSTRING_H */

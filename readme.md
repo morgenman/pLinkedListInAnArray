@@ -26,7 +26,19 @@ Starting with an /abstract class/ (you can read that as /interface/ in the Java 
 ## User Interface
 This is a command-loop program that loops, reading one line at a time, and using the first letter of the line as a command and interpreting the remaining parts of the line as parameters when necessary.
 
-Note that this program is *provided*.
+The commands are:
+- a <str> :: add <str> to an open string location, if there is one.
+- d <ndx> :: delete the string at location <ndx>, if there is one.
+- f :: memory pool to print its free list node numbers in order
+- i <ndx> :: translate the string in <ndx> to Pig Latin. *NOT IMPLEMENTED* - part of your assignment.
+- n <ndx> :: memory pool to print the nodes that make up this string with character, and the next node number.
+- p :: print the string array with indices in use and contents.
+- q :: quit
+- s <ndx> <str> :: set the value of an in-use string to <str>.
+- t :: toggle memory pool tracing of ~newNode~ and ~deleteNode~ calls.
+- ? :: Display help message (also displayed after any unknown command).
+
+Commands are read by the line so all parameters must appear on the same line and only one command can appear per line. There is no error checking on extra parameters.
 
 ## The Assignment
 1. You must implement a class that implements all of the abstract member functions in ~src/memory/AbstractMemoryPool.h~

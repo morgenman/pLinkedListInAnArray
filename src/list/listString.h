@@ -1,21 +1,22 @@
 #ifndef LISTSTRING_H
 #define LISTSTRING_H
 
-#include "abstractPool.h"
 #include <iostream>
 #include <string>
 
-class ListString
-{
-public:
+#include "abstractPool.h"
+
+class ListString {
+ public:
   using NodePtr = AbstractPool::NodePtr;
   constexpr static NodePtr nullNodePtr = AbstractPool::nullNodePtr;
-  
+
   /**
    * Set the pool to use. Must be run before any ListString are
    * created and can only be called once.
    *
-   * @param thePool pointer an an AbstractPool implementation that will provide nodes.
+   * @param thePool pointer an an AbstractPool implementation that will provide
+   * nodes.
    * @throws logic_error if set a second time.
    */
   static void setPool(AbstractPool *thePool);
@@ -88,7 +89,7 @@ public:
 
   virtual void nodes();
 
-private:
+ private:
   // Static _pointer_ to the class-wide memory pool.  MUST be set
   // before any constructor is called; cannot be reset.
   static AbstractPool *pool;

@@ -1,7 +1,6 @@
 #ifndef ABSTRACTPOOL_H
 #define ABSTRACTPOOL_H
 
-
 /**
  * Pure virtual functions (= 0) mean the class is abstract (cannot be
  * instantiated). This class must be extended for use with all of
@@ -11,7 +10,7 @@
  * the subclass.
  */
 class AbstractPool {
-public:
+ public:
   using NodePtr = int;
   constexpr static NodePtr nullNodePtr = -1;
 
@@ -21,7 +20,6 @@ public:
    * @return a NodePtr for a valid Node if one is available;
    * nullNodePtr otherwise.
    */
-
   virtual NodePtr newNode() = 0;
 
   /**

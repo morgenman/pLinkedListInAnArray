@@ -4,8 +4,9 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-// need to include your memory pool header here
+
 #include "listString.h"
+#include "memoryPool.h"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ bool validateStringIndex(bool inUse[maxNumberOfWords], int index) {
  */
 int main(int argc, char* argv[]) {
   // initialize the memory pool for all ListString.
-  // ListString::setPool(new AbstractMemoryPool());
+  ListString::setPool(new MemoryPool());
 
   // words/inUse are parallel arrays of string/bool
   // inUse[x] -> words[x] is a valid, in use string

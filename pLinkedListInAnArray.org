@@ -127,7 +127,7 @@ Note that this program is *provided*.
    - All member functions are virtual and abstract.
      - An abstract member function is indicated with = 0 at the end of the declaration.
    - Look at how to /inherit/ from a class and write a header file (probably in ~src/memory~) for your class. You can add any public or private members or functions to your class.
-     - Provided code interacts with a memory pool through a pointer at the abstract class. That means that it does not call any functions other than those in the base class.
+     - *Provided code interacts with a memory pool through a pointer at the abstract class*. That means that it does not call any functions other than those in the base class.
      - Implement /stub/ functions that do as little as possible (return false or null or do nothing) and get that to compile. Then uncomment the setting of the ~ListString~ pool in ~src/main/igpayAtinlay.cpp~.
    - The ~ListString~ class is *almost* complete (see below): you can use it to test your memory pool.
      - Your pool has an array of the ~Node~ type. No class outside of your pool can see that type. All other classes can see ~NodePtr~ which is actually an int. The constant ~nullNodePtr~ serves the purpose of ~nullptr~ for regular C++ pointers.

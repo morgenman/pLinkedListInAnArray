@@ -10,10 +10,33 @@
  * @due 9/20/2021
  */
 
+#include <stack>
+#include <string>
+
 #include "abstractPool.h"
 
 class MemoryPool : public AbstractPool {
+ private:
+  /**
+   *
+   * Node Structure
+   */
+  struct node {
+    std::string data;
+    NodePtr next;
+  };
+
+  int arrSize;
+  node array[15];
+  std::stack<int> free;
+
  public:
+  /**
+   * MemoryPool
+   *
+   */
+  MemoryPool();
+
   /**
    *
    * @return {NodePtr} :

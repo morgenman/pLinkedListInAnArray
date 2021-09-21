@@ -60,7 +60,7 @@ bool validateStringIndex(bool inUse[maxNumberOfWords], int index) {
       cout << "String index " << index << " contains no string.\n";
   } else
     cout << index << " is out of range of valid strings [0, "
-         << maxNumberOfWords << ")\n";
+         << maxNumberOfWords << "]\n";
   return false;
 }
 

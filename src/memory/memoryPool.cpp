@@ -11,34 +11,32 @@ using namespace std;
 MemoryPool::MemoryPool() {
   head = 0;
   arrSize = sizeof(array) / sizeof(array[0]);
-  for (int i = 0; i < arrSize; i++) {
+  for (int i = arrSize - 1; i >= 0; i--) {
     free.push(i);
+    set(i, 0, nullNodePtr);
   }
-  for (int i = 0; i < 15; i++) {
-    set(i, 'a' + i, i + 1);
-  }
+  print();
 }
 
 void MemoryPool::set(NodePtr index, char ch, NodePtr next) {
   array[index].data = ch;
-  array[index].data = next;
-}
-void MemoryPool::set(NodePtr index, char ch) {
-  set(index, ch, get(index).next);
-}
-void MemoryPool::set(NodePtr index, NodePtr next) {
-  set(index, get(index).data, next);
+  array[index].next = next;
 }
 
 MemoryPool::node MemoryPool::get(NodePtr index) { return array[index]; }
 
-MemoryPool::NodePtr MemoryPool::getParentIndex(NodePtr index) {
-  int i = head;
-  while (array[i].next != nullNodePtr) {
-    if (array[i].next == index) return i;
-    i++;
+void MemoryPool::print() {
+  cout << "Node\t"
+       << "|\t"
+       << "Value\t"
+       << "|\t"
+       << "Next" << endl;
+  for (int i = 0; i < 15; i++) {
+    cout << i << "\t"
+         << "|\t*" << (char)array[i].data << "*\t"
+         << "|\t*" << array[i].next << "*" << endl;
+    cout.flush();
   }
-  return nullNodePtr;
 }
 
 MemoryPool::NodePtr MemoryPool::newNode() {
@@ -51,19 +49,20 @@ MemoryPool::NodePtr MemoryPool::newNode() {
   }
 }
 
-void MemoryPool::deleteNode(NodePtr curr) {}
+void MemoryPool::deleteNode(NodePtr curr) { free.push(curr); }
 
 char MemoryPool::data(NodePtr curr) { return get(curr).data; }
 
 char MemoryPool::data(NodePtr curr, char ch) {
-  set(curr, ch);
+  print();
+  set(curr, ch, get(curr).next);
   return get(curr).data;
 }
 
 MemoryPool::NodePtr MemoryPool::next(NodePtr curr) { return array[curr].next; }
 
 MemoryPool::NodePtr MemoryPool::next(NodePtr curr, NodePtr next) {
-  set(curr, next);
+  set(curr, next, get(curr).next);
   return get(curr).next;
 }
 
@@ -88,12 +87,9 @@ void MemoryPool::showFreeList() {
 }
 
 void MemoryPool::nodes(NodePtr head) {
-  int j = head;
-  cout << head;
-  node i = get(j);
+  node i = get(head);
   while (i.next != nullNodePtr) {
-    // cout << i.data << "\t" << i.next << endl;
-    j++;
-    i = get(j);
+    cout << i.next << "\t" << i.next << endl;
+    i = get(head++);
   }
 }

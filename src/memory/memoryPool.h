@@ -21,15 +21,16 @@ class MemoryPool : public AbstractPool {
    * Node Structure
    */
   struct node {
+   public:
     char data;
     NodePtr next;
   };
   node array[15];
 
-  
   int arrSize;
   int head;
-  
+  bool traceOn = false;
+
   std::stack<int> free;
 
   void set(NodePtr index, char ch, NodePtr next);
@@ -37,7 +38,8 @@ class MemoryPool : public AbstractPool {
   // void set(NodePtr index, NodePtr next);
   node get(NodePtr index);
   NodePtr getParentIndex(NodePtr index);
-  void print();
+  void print(const char* in);
+  void print(const char* in, bool arr);
 
  public:
   /**

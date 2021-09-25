@@ -63,6 +63,21 @@ bool validateStringIndex(bool inUse[maxNumberOfWords], int index) {
          << maxNumberOfWords << "]\n";
   return false;
 }
+void commands() {
+  cout << "\t(a)dd [word] \t\t\t\t Add word to list of strings. Will use first "
+          "available string slot. Will stop looking for word on whitespace.\n"
+          "\t(d)elete [word index]\t\t\t Delete word stored at index\n"
+          "\t(f)ree-list\t\t\t\t Display available free nodes (not string "
+          "slots)\n"
+          "\t(i)gpay-atinizelay [word index]\t\t Convert a word to piglatin\n"
+          "\t(n)odes [(optional) word index]\t\t Display the nodes for a word. "
+          "If no index given, show all words. \n"
+          "\t(p)rint\t\t\t\t\t Print words stored\n"
+          "\t(q)uit\n"
+          "\t(s)et [word index] [word]\t\t Replace word using word index.\n"
+          "\t(t)race\t\t\t\t\t Toggle program trace for debugging purposes\n"
+          "\t(?)help\t\t\t\t\t Display this text.\n\n";
+}
 
 /**
  * main program
@@ -79,9 +94,15 @@ int main(int argc, char* argv[]) {
   bool myTrace = false;
 
   // the prompt to display to the user
+  cout << "This program stores words. Each word is stored using linked nodes "
+          "(which store a single characters).\n";
+  cout << "Each word is stored in an array, and can be referenced by word "
+          "index.\n\n";
+  commands();
   string prompt = "Action: (adfinpqst?): ";
   string line;
   conditionalStringToStdout(prompt);
+
   while (getline(cin, line)) {
     if (line.empty()) continue;
 
@@ -100,7 +121,6 @@ int main(int argc, char* argv[]) {
       else {
         string word;
         entered >> word;
-
         words[freeString] = ListString{word};
         inUse[freeString] = true;
       }
@@ -122,17 +142,26 @@ int main(int argc, char* argv[]) {
         words[igpayIndex].igpayAtinlay();
       }
     } else if (cmd == "n") {
-      int nodesIndex;
+      int nodesIndex = -1;
       entered >> nodesIndex;
-      if (validateStringIndex(inUse, nodesIndex)) {
+      if (nodesIndex == -1) {
+        for (auto index = 0; index < maxNumberOfWords; ++index)
+          if (inUse[index]) {
+            cout << "Word [" << index << "]:" << endl;
+            words[index].nodes();
+          }
+      } else if (validateStringIndex(inUse, nodesIndex)) {
         words[nodesIndex].nodes();
       }
     } else if (cmd == "p") {
+      if (myTrace) ListString::trace(false);
       cout << "words: -----" << endl;
       for (auto index = 0; index < maxNumberOfWords; ++index)
         if (inUse[index])
           cout << "  [" << index << "] = " << words[index] << endl;
       cout << "------------" << endl;
+      if (myTrace) ListString::trace(myTrace);
+
     } else if (cmd == "s") {
       int setIndex;
       entered >> setIndex;
@@ -147,8 +176,7 @@ int main(int argc, char* argv[]) {
     } else {
       if (cmd != "?") cout << "Unknown command \"" << cmd << "\"" << endl;
       cout << "Valid commands:" << endl;
-      cout << "(a)dd\n(d)elete\n(f)ree-list\n(i)gpay-atinizelay\n"
-              "(n)odes\n(p)rint\n(q)uit\n(s)et\n(t)race\n(?)help\n";
+      commands();
     }
     conditionalStringToStdout(prompt);
   }

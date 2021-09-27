@@ -65,9 +65,10 @@ bool validateStringIndex(bool inUse[maxNumberOfWords], int index) {
 }
 void commands() {
   cout << "\t(a)dd [word] \t\t\t\t Add word to list of strings. Will use first "
-          "available string slot. Will stop looking for word on whitespace.\n"
+          "available string slot.\n\t\t\t\t\t\t Will stop looking for word on "
+          "whitespace.\n"
           "\t(d)elete [word index]\t\t\t Delete word stored at index\n"
-          "\t(f)ree-list\t\t\t\t Display available free nodes (not string "
+          "\t(f)ree-list\t\t\t\t Display free nodes in data pool (not string "
           "slots)\n"
           "\t(i)gpay-atinizelay [word index]\t\t Convert a word to piglatin\n"
           "\t(n)odes [(optional) word index]\t\t Display the nodes for a word. "
@@ -123,6 +124,7 @@ int main(int argc, char* argv[]) {
         entered >> word;
         words[freeString] = ListString{word};
         inUse[freeString] = true;
+        cout << "  [" << freeString << "] = " << words[freeString] << endl;
       }
     } else if (cmd == "d") {
       int deleteIndex;
@@ -180,4 +182,5 @@ int main(int argc, char* argv[]) {
     }
     conditionalStringToStdout(prompt);
   }
+  return 0;
 }

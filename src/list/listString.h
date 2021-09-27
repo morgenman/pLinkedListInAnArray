@@ -89,10 +89,33 @@ class ListString {
 
   virtual void nodes();
 
+  /**
+   * Return word as a string. Used in testing function
+   *
+   * @return {std::string}  :
+   */
+  std::string getWord();
+
  private:
   // Static _pointer_ to the class-wide memory pool.  MUST be set
   // before any constructor is called; cannot be reset.
   static AbstractPool *pool;
+
+  /**
+   * Tests if a character is alphabetic
+   *
+   * @param  {char} in : character to test
+   * @return {bool}    : true if character is a-Z
+   */
+  static bool isLetter(char in);
+
+  /**
+   * Determines if a character is a vowel
+   *
+   * @param  {char} in : character to test
+   * @return {bool}    : true if vowel
+   */
+  static bool isVowel(char in);
 
   /**
    * Swap our guts with the guts of the other string.

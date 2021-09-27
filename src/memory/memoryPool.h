@@ -1,7 +1,5 @@
 /**
- * One line summary
- *
- * Mulitline description describing intent of file
+ * Implementation of abstractPool
  *
  * @author Dylan C. Morgen
  * @email morgendc203@potsdam.edu
@@ -17,7 +15,6 @@
 class MemoryPool : public AbstractPool {
  private:
   /**
-   *
    * Node Structure
    */
   struct node {
@@ -25,25 +22,29 @@ class MemoryPool : public AbstractPool {
     char data;
     NodePtr next;
   };
-  node array[15];
-
+  // This stores the size of the array and is initialized on construction.
   int arrSize;
-  int head;
+
+  // Actual data pool
+  node array[100];
+
+  // Trace Support implementation
   bool traceOn = false;
 
-  std::stack<int> free;
+  // Free list implementation. Just a stack of indexes
+  std::stack<int> freeList;
 
+  // Set and get functions, created for my own sanity
   void set(NodePtr index, char ch, NodePtr next);
-  // void set(NodePtr index, char ch);
-  // void set(NodePtr index, NodePtr next);
   node get(NodePtr index);
-  NodePtr getParentIndex(NodePtr index);
+
+  //
   void print(const char* in);
   void print(const char* in, bool arr);
 
  public:
   /**
-   * MemoryPool
+   * MemoryPool constructor.
    *
    */
   MemoryPool();
@@ -55,6 +56,13 @@ class MemoryPool : public AbstractPool {
    * nullNodePtr otherwise.
    */
   NodePtr newNode();
+
+  /**
+   * Returns the number of free nodes left
+   *
+   * @return {int}  : the number of free nodes
+   */
+  int free();
 
   /**
    * Release a NodePtr back to the pool.

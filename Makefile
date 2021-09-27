@@ -62,6 +62,7 @@ OBJ := $(filter-out $(TESTOBJ), $(OBJ))
 
 EXEC := $(addprefix $(BUILD)/, $(basename $(notdir $(EXEC_SRC))))
 
+
 # Default rule; builds target and tests
 all:  $(BUILD) $(EXEC)
 
@@ -121,8 +122,11 @@ $(BUILDDIRS):
 	@mkdir -p $@
 
 # Rule to clean files.
-.PHONY:	clean
+.PHONY:	clean test
 clean :
 	-rm -rf $(BUILD)
 
 include $(wildcard $(DEPFILES))
+
+
+

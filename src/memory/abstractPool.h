@@ -23,6 +23,13 @@ class AbstractPool {
   virtual NodePtr newNode() = 0;
 
   /**
+   * Returns the number of free nodes left
+   *
+   * @return {int}  : the number of free nodes
+   */
+  virtual int free() = 0;
+
+  /**
    * Release a NodePtr back to the pool.
    *
    * @param curr NodePtr indicating the node to return

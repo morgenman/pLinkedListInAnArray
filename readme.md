@@ -5,16 +5,24 @@ morgendc203@potsdam.edu
 # Required Documentation:
 
 ## Problem
+In this assignment I implemented abstractPool. 
+I also setup catch2, with moderate success. 
 
 ## Testing Criteria
 
 ### Test Input
-
-### Test Execution
+To test, run ./build/test
+Not all functions are testable this way, given that there are several functions
+that print to the screen. 
 
 ### Expected Output
+Unfortunately, Catch2 is very weird and the pig latin function is not passing.
+Maybe you could illuminate me as to what I'm doing wrong?
+Everything else should pass.
 
 ### Compilation and Execution Instructions
+```make``` 
+will make both executables. 
 
  
  

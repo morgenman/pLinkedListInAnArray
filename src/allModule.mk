@@ -3,7 +3,7 @@
 # Executable modules will have each .cpp file linked against all objcect files
 # EXCEPT for other object files generated from code in an executable module.
 #   One "tool" or executable built for each .cpp file in a listed module
-EXECUTABLE_MODULES := main
+EXECUTABLE_MODULES := main tests
 # To add a new executable:
 #   Just put the .cpp file in one of the listed subfolders.
 #   The executable.mk file will pick up the new file on the
